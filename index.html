@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apresentação Desktop | Indicador Tipológico</title>
+  <meta name="description" content="Mockup desktop do fluxo do Indicador Tipológico para apresentação." />
+  <style>
+    :root {
+      --bg: #f9eeee;
+      --text: #111827;
+      --muted: #6b7280;
+      --red: #f12813;
+      --border: rgba(17, 24, 39, 0.12);
+      --shadow: 0 18px 60px rgba(17, 24, 39, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    .deck {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 32px 32px 88px;
+      position: relative;
+    }
+
+    .slide-frame {
+      width: min(100%, calc((100vh - 140px) * 16 / 9));
+      aspect-ratio: 16 / 9;
+      max-width: 1672px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateX(18px) scale(0.995);
+      transition: opacity 220ms ease, transform 220ms ease;
+      pointer-events: none;
+      background: #fff;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .topbar strong { font-weight: 700; }
+    .topbar span { color: var(--muted); }
+
+    .controls {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(17, 24, 39, 0.1);
+    }
+
+    button {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      border-radius: 999px;
+      height: 40px;
+      min-width: 40px;
+      padding: 0 14px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 150ms ease, border-color 150ms ease, background 150ms ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(241, 40, 19, 0.35);
+    }
+
+    button:active { transform: translateY(0); }
+
+    .dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 4px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 0;
+      padding: 0;
+      min-width: 10px;
+      background: rgba(17, 24, 39, 0.18);
+    }
+
+    .dot.active {
+      width: 28px;
+      background: var(--red);
+    }
+
+    .counter {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      min-width: 42px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      body { overflow: auto; }
+      .deck {
+        min-height: 100vh;
+        height: auto;
+        padding: 78px 14px 86px;
+      }
+      .slide-frame {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 14px;
+      }
+      .topbar {
+        width: calc(100% - 24px);
+        justify-content: center;
+        font-size: 12px;
+      }
+      .controls {
+        width: calc(100% - 24px);
+        justify-content: space-between;
+      }
+      .dots { gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar" aria-label="Informações da apresentação">
+    <strong>Indicador Tipológico</strong>
+    <span>Apresentação desktop</span>
+  </header>
+
+  <main class="deck">
+    <section class="slide-frame" aria-live="polite">
+      <article class="slide active" data-title="Login">
+        <img src="assets/01-login.png" alt="Tela desktop de login da área do participante" />
+      </article>
+      <article class="slide" data-title="Área do participante">
+        <img src="assets/02-area-participante.png" alt="Tela desktop inicial da área do participante com chamada para iniciar o indicador tipológico" />
+      </article>
+      <article class="slide" data-title="Indicador Tipológico">
+        <img src="assets/03-indicador-tipologico.png" alt="Tela desktop do questionário do indicador tipológico" />
+      </article>
+      <article class="slide" data-title="Conclusão">
+        <img src="assets/04-conclusao.png" alt="Tela desktop de conclusão do indicador tipológico" />
+      </article>
+      <article class="slide" data-title="Resultado liberado">
+        <img src="assets/05-resultado.png" alt="Tela desktop com resultado liberado ao participante" />
+      </article>
+    </section>
+  </main>
+
+  <nav class="controls" aria-label="Navegação dos slides">
+    <button type="button" id="prev" aria-label="Slide anterior">‹</button>
+    <div class="dots" id="dots" aria-label="Indicadores dos slides"></div>
+    <div class="counter" id="counter">1/5</div>
+    <button type="button" id="next" aria-label="Próximo slide">›</button>
+  </nav>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const dotsContainer = document.getElementById('dots');
+    const counter = document.getElementById('counter');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    let current = 0;
+
+    slides.forEach((slide, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'dot';
+      dot.setAttribute('aria-label', `Ir para o slide ${index + 1}: ${slide.dataset.title}`);
+      dot.addEventListener('click', () => goTo(index));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = Array.from(document.querySelectorAll('.dot'));
+
+    function goTo(index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+      counter.textContent = `${current + 1}/${slides.length}`;
+      document.title = `${slides[current].dataset.title} | Indicador Tipológico`;
+    }
+
+    prev.addEventListener('click', () => goTo(current - 1));
+    next.addEventListener('click', () => goTo(current + 1));
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight' || event.key === ' ') goTo(current + 1);
+      if (event.key === 'ArrowLeft') goTo(current - 1);
+    });
+
+    goTo(0);
+  </script>
+</body>
+</html>
